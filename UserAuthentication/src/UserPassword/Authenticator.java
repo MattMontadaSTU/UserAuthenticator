@@ -49,7 +49,7 @@ public class Authenticator {
 	 * Sign in function
 	 * @return
 	 */
-	@SuppressWarnings({ "null", "resource" })
+	@SuppressWarnings({ "null" })
 	public static boolean signIn() {
 		Scanner keyboard = new Scanner(System.in);
 		boolean valid = false;
