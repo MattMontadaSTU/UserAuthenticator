@@ -96,9 +96,8 @@ public class Authenticator {
 	 * @return
 	 * @throws Exception
 	 */
-	@SuppressWarnings({ "null", "resource" })
-	public static String addUser() throws Exception {
-		@SuppressWarnings("resource")
+	@SuppressWarnings({ "resource", "null" })
+	public static String addUser() {
 		ArrayList <String> credentials = null;
 		Scanner user = new Scanner(System.in);
 		
@@ -113,7 +112,13 @@ public class Authenticator {
 		credentials.add(username);
 		credentials.add(password);
 		
-		return hash(password);
+		try {
+			return hash(password);
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return password;
 	}
 	
 	/**
