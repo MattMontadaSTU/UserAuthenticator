@@ -6,8 +6,17 @@ import java.security.NoSuchAlgorithmException;
 import java.security.SecureRandom;
 import java.util.ArrayList;
 import java.util.Scanner;
-
+/**
+ * This class creates the authenticator for the program
+ * @author M0797063
+ *
+ */
 public class Authenticator {
+	/**
+	 * The main authenticator program
+	 * @param args
+	 * @throws Exception
+	 */
 	public static void main(String[] args) throws Exception {
 		Scanner input = new Scanner(System.in);
 		
@@ -19,15 +28,15 @@ public class Authenticator {
 		String action = input.nextLine();
 		
 		if (action == "1") {
-			addUser();
+			addUser(); //what will happen if the user inputs 1
 		}
 		
 		else if (action == "2") {
-			removeUser();
+			removeUser(); //what will happen when the user inputs 2
 		}
 		
 		else if (action == "3") {
-			signIn();
+			signIn(); //what will happen if the suer inputs 3
 		}
 		
 		else {
@@ -36,6 +45,10 @@ public class Authenticator {
 		input.close();
 	}
 	
+	/**
+	 * Sign in function
+	 * @return
+	 */
 	@SuppressWarnings({ "null", "resource" })
 	public static boolean signIn() {
 		Scanner keyboard = new Scanner(System.in);
@@ -55,34 +68,20 @@ public class Authenticator {
 				valid = false;
 				System.out.print("Password needs to be 8 to 16 characters long");
 			}
-			else {
-				valid = true;
+			for (int j = 0; j < SpecialCharacters.length; j++) {
+				String[] commonPass = null;
+				if(password.equalsIgnoreCase(commonPass[j])) {
+					valid = false;
+					System.out.print("Password needs a special character");
+				}
 			}
 			
-			if(password != password.toUpperCase()) {
-				valid = false;
-				System.out.print("Password needs to include an uppercase character");
-			}
-			
-			if(password != password.toLowerCase()) {
-				valid = false;
-				System.out.print("Password needs to include a lowercase character");
-			}
-			else {
-				valid = true;
-			}
-		}
-		
-		for (int j = 0; j < SpecialCharacters.length; j++) {
-			String[] commonPass = null;
-			if(password.equalsIgnoreCase(commonPass[j])) {
-				valid = false;
-				System.out.print("Password needs a special character");
-			}
-		}
+			keyboard.close();}
 		return valid;
-	}
-	
+		}
+	/**
+	 * Array List function
+	 */
 	public static void arrayList() {
 		ArrayList <String> credentials = new ArrayList<String>();
 		
@@ -92,6 +91,11 @@ public class Authenticator {
 		credentials.add(3, "Jon1999*");
 	}
 	
+	/**
+	 * Add User function
+	 * @return
+	 * @throws Exception
+	 */
 	@SuppressWarnings({ "null", "resource" })
 	public static String addUser() throws Exception {
 		@SuppressWarnings("resource")
@@ -109,9 +113,12 @@ public class Authenticator {
 		credentials.add(username);
 		credentials.add(password);
 		
-		return hash(password, null);
+		return hash(password);
 	}
 	
+	/**
+	 * Remove User function
+	 */
 	@SuppressWarnings("null")
 	public static void removeUser() {
 		ArrayList <String> credentials = null;
@@ -120,12 +127,22 @@ public class Authenticator {
 		credentials.remove(username);
 	}
 	
+	/**
+	 * Hash function
+	 * @param password
+	 * @return
+	 * @throws Exception
+	 */
 	private static String hash(String password) throws Exception {
         if (password == null || password.length() == 0)
             throw new IllegalArgumentException("Empty passwords are not supported.");
         return password;
     }
 	
+	/**
+	 * Salt function
+	 * @return
+	 */
 	@SuppressWarnings("null")
 	public static String salt() {
 		{
@@ -164,4 +181,5 @@ public class Authenticator {
 
 	
 }
-}
+
+			
