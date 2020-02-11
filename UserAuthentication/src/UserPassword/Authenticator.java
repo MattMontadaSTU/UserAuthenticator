@@ -47,7 +47,7 @@ public class Authenticator {
 	
 	/**
 	 * Sign in function
-	 * @return
+	 * @return valid: true or false
 	 */
 	@SuppressWarnings({ "null" })
 	public static boolean signIn() {
@@ -93,7 +93,7 @@ public class Authenticator {
 	
 	/**
 	 * Add User function
-	 * @return
+	 * @return password
 	 * @throws Exception
 	 */
 	@SuppressWarnings({ "resource", "null" })
@@ -137,7 +137,7 @@ public class Authenticator {
 	/**
 	 * Hash function
 	 * @param password
-	 * @return
+	 * @return password
 	 * @throws Exception
 	 */
 	private static String hash(String password) throws Exception {
@@ -148,7 +148,7 @@ public class Authenticator {
 	
 	/**
 	 * Salt function
-	 * @return
+	 * @return salt
 	 */
 	@SuppressWarnings("null")
 	public static String salt() {
