@@ -120,7 +120,7 @@ public class Authenticator {
 		credentials.remove(username);
 	}
 	
-	private static String hash(String password, byte[] salt) throws Exception {
+	private static String hash(String password) throws Exception {
         if (password == null || password.length() == 0)
             throw new IllegalArgumentException("Empty passwords are not supported.");
         return password;
