@@ -129,7 +129,9 @@ public class Authenticator {
 		ArrayList <String> credentials = null;
 		
 		Object username = null;
+		Object password = null;
 		credentials.remove(username);
+		credentials.remove(password);
 	}
 	
 	/**
